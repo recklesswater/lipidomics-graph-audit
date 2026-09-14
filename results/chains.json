@@ -1,0 +1,132 @@
+{
+  "fig3_fingerprint": {
+    "radii": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "unique_fingerprints": [
+      6953,
+      9070,
+      11661,
+      15140,
+      17647
+    ],
+    "total": 35493
+  },
+  "fig2_chain_cooccurrence": {
+    "n_chain_nodes": 42,
+    "n_edges": 15,
+    "n_molecules_with_chains": 14891,
+    "top_npmi_pairs": [
+      {
+        "a": "20:0",
+        "b": "20:4",
+        "npmi": 0.162,
+        "count": 351
+      },
+      {
+        "a": "18:2",
+        "b": "20:4",
+        "npmi": 0.157,
+        "count": 351
+      },
+      {
+        "a": "18:2",
+        "b": "20:0",
+        "npmi": 0.156,
+        "count": 349
+      },
+      {
+        "a": "18:0",
+        "b": "20:4",
+        "npmi": 0.151,
+        "count": 359
+      },
+      {
+        "a": "16:0",
+        "b": "18:2",
+        "npmi": 0.151,
+        "count": 366
+      },
+      {
+        "a": "16:0",
+        "b": "18:1",
+        "npmi": 0.15,
+        "count": 388
+      },
+      {
+        "a": "18:0",
+        "b": "18:2",
+        "npmi": 0.147,
+        "count": 359
+      },
+      {
+        "a": "16:0",
+        "b": "20:4",
+        "npmi": 0.146,
+        "count": 355
+      },
+      {
+        "a": "18:0",
+        "b": "20:0",
+        "npmi": 0.145,
+        "count": 351
+      },
+      {
+        "a": "18:1",
+        "b": "20:4",
+        "npmi": 0.144,
+        "count": 358
+      },
+      {
+        "a": "18:1",
+        "b": "20:0",
+        "npmi": 0.143,
+        "count": 356
+      },
+      {
+        "a": "16:0",
+        "b": "20:0",
+        "npmi": 0.142,
+        "count": 349
+      }
+    ]
+  },
+  "fig4_sum_map": {
+    "n_mapped": 15061,
+    "carbon_range": [
+      2.0,
+      86.0
+    ],
+    "db_range": [
+      0.0,
+      17.0
+    ]
+  },
+  "fig5_bipartite": {
+    "n_headgroups": 23,
+    "n_chains": 45,
+    "n_edges": 376
+  },
+  "fig6_TG": {
+    "head": "TG",
+    "n_nodes": 1600,
+    "n_edges": 7455
+  },
+  "fig7_cooccurrence_diagnostic": {
+    "n_pairs": 440,
+    "ratio_median": 0.702,
+    "ratio_in_0.8_1.25_pct": 3.4,
+    "pmi_median": -0.354,
+    "pmi_positive_pct": 4.1
+  },
+  "coverage": {
+    "n_total": 35494,
+    "n_with_head_and_chains": 14995,
+    "n_with_total_carbon": 15062
+  },
+  "runtime_sec": 6.4
+}

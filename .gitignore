@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 中间产物，可随时重跑生成
+outputs/
+
+# 输入数据不入库，请按 README 自行下载
+data/*.xlsx
+data/*.xls
+data/*.csv
+data/*.tsv
+!data/README.md
