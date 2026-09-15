@@ -265,10 +265,6 @@ Input paths can be overridden with environment variables; see `src/config.py`.
 
 ---
 
-## AI disclosure
-
-The analysis direction, framing and conclusions were set by the author. Code implementation, figure rendering and manuscript preparation were carried out with AI coding assistance under the author's direction. Every number can be regenerated from public data with `python run_all.py`.
-
 ---
 
 ## Citation
