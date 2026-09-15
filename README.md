@@ -32,7 +32,7 @@ This repository uses **only the public LIPID MAPS structure database**. There is
 | Entries | 35,501 -> 35,494 after cleaning |
 | Categories covered | 5: GP, FA, GL, SP, ST |
 | Not covered | PK (polyketides), SL (saccharolipids), PR (prenol lipids), among others |
-| Coverage | roughly half of the full LIPID MAPS database |
+| Coverage | **70.2% of the full LIPID MAPS database** (35,494 of 50,573 unique structures; LMSD total as of 2026-09) |
 
 **Every number below holds for these 5 categories and 35,494 entries, not for all lipids.**
 
@@ -52,6 +52,21 @@ This repository uses **only the public LIPID MAPS structure database**. There is
 **This is a table that is rich in structure and almost empty in relations.**
 
 The immediate consequence: if your plan was to use metabolic pathway membership as the GNN edge set, it cannot work here. 97% of the molecules have no pathway annotation at all.
+
+**Why KEGG is that sparse, and the workaround.** KEGG does not index lipid species; it indexes *prototypical* lipids — one representative structure per lipid class or paradigm. A PC with 34 carbons and one with 38 carbons are the same KEGG entry, and adding or removing a double bond does not create a new one either. Species-level matching against KEGG therefore cannot succeed by construction, and a ~1% hit rate is the expected outcome, not a curation failure on our side.
+
+The way around it is to bridge at the class level instead of the species level:
+
+```
+lipid species (no KEGG)
+  -> subclass           (Sub Class_Abbrev, 81.7% coverage)
+  -> a species in the same subclass that does have a KEGG ID
+  -> its KEGG pathway
+```
+
+Every lipid in a subclass inherits the pathway membership of the subclass's prototypical member. Two caveats come with it: the inheritance is only as good as the assumption that all members of a subclass share pathway context, and the resulting edge carries **subclass-level resolution, not species-level**. For a heterogeneous graph that is usually an acceptable trade — the alternative is having no lipid-pathway edge at all — but the edge type should be labelled as class-inherited rather than direct, so that downstream analysis does not treat it as equivalent to an experimentally established link.
+
+This bridge is also the cheapest source of the "lipid class ↔ pathway" edges that `figures/fig5_headgroup_chain_network.png` leaves missing.
 
 **How to run this check**: print the coverage of every candidate relational field before you build the graph. Anything below roughly 50% cannot carry a primary edge type; it can only be a sparse feature.
 
