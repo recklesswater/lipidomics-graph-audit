@@ -134,6 +134,35 @@ The reason is that different headgroups draw from entirely different chain pools
 
 ---
 
+## What a graph model would have learned from this data
+
+The three checks above are usually read as a caution about reporting. Their larger
+consequence is about modelling.
+
+A graph neural network carries no biological prior. It does not know that TG and PC draw
+from different chain pools, and it cannot know that "chains that appear together" partly
+encodes the sampling rule rather than metabolism. If edges are built from this database
+without the checks above, the strongest regularities the model can find are:
+
+* the fixed number of chains per molecule (a sampling artefact), and
+* headgroup-specific chain preferences (a fact already established in biochemistry).
+
+A model trained on those edges re-derives lipid taxonomy with high accuracy and learns
+nothing about the biology the analysis was meant to address. Removing those components is
+therefore not a cosmetic correction to a weight matrix; it is the step that makes any
+remaining signal interpretable.
+
+The statistical reasoning, including why co-occurrence is measured with pointwise mutual
+information rather than MIC, why a fixed item count breaks the independence null, and how
+the headgroup acts as a confounder, is written up in
+[`docs/statistical_notes.md`](docs/statistical_notes.md).
+
+On the data source: LIPID MAPS is the reference structure database for lipids, so the
+sparse relational fields are not a shortcoming of this particular export. A structure
+database enumerates molecules; a pathway database indexes prototypical members rather than
+species. Expecting the first to supply the second conflates two kinds of resource, and no
+alternative structure database would change that.
+
 ## What is actually reusable
 
 It is not all bad news. These parts carry over directly:
